@@ -14,14 +14,14 @@ notas: dict = {
     "Actitud": []
 }
 
-def process_class(path: str, encoding="UTF-8"):
+def process_class(path: str):
     """
     Pasa los datos del csv al diccionario
 
     Args:
         path (str): Ruta del fichero csv
     """
-    with open(path) as file:
+    with open(path, encoding="UTF-8") as file:
         # Convierto el fichero csv en un diccionario en el que los valores de cada clave son las claves de la primera línea
         file_dict = csv.DictReader(file)
         # Recorro el diccionario y añade los valores a las listas del diccionario notas
@@ -37,4 +37,3 @@ def process_class(path: str, encoding="UTF-8"):
             notas["Actitud"].append(float(line["Actitud"].replace(",", ".")))
 
 process_class("class.csv")
-print(notas)
